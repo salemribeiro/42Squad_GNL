@@ -3,18 +3,14 @@
 int main()
 {
 	static int	fd;
+	int			ret;
 	static char	*line;
 
 	fd = open("./teste", O_RDONLY);
-	get_next_line(fd, &line);
-	printf("%s\n", line);
-	get_next_line(fd, &line);
-	printf("%s\n", line);
-	get_next_line(fd, &line);
-	printf("%s\n", line);
-	get_next_line(fd, &line);
-	printf("%s\n", line);
-	get_next_line(fd, &line);
-	printf("%s\n", line);
+	while ((ret = get_next_line(fd, &line)))
+	{
+		printf("%s\n", line);
+	}
+	printf("retorno: %d\n", ret);
 	return (0);
 }
