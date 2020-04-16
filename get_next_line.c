@@ -1,7 +1,6 @@
 #include "get_next_line.h"
 
 /* Função principal para leitura de linha                                     */
-
 int		get_next_line(int fd, char **line)
 {
 	static char	*s_line;
@@ -21,6 +20,11 @@ int		get_next_line(int fd, char **line)
 		result = read(fd, l_buffer, BUFFER_SIZE);
 		if (result > 0 &&  result <= BUFFER_SIZE)
 			s_line = ft_strjoin(s_line, l_buffer);
+		else if (result == 0)
+		{
+			*line = ft_strjoin(s_line, l_buffer);
+			return (0);
+		}
 		else
 		{
 			*line = s_line;
@@ -32,10 +36,7 @@ int		get_next_line(int fd, char **line)
 	return (result);
 }
 
-
-
 /* Função responsável por unir as duas strings                                */
-
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*ptr;
@@ -65,7 +66,6 @@ char	*ft_strjoin(char *s1, char *s2)
 }
 
 /* Função verifica se já temos uma linha completa                             */
-
 int		check_line(char *ptr)
 {
 	int newline;
@@ -103,7 +103,7 @@ char	*ft_calloc(size_t count, size_t size)
 	}
 	return (ptr);
 }
-
+/* Função responsável por copiar os dados de uma string para outra            */
 size_t		ft_strlcpy(char *dest, char *src, size_t size)
 {
 	size_t i;
