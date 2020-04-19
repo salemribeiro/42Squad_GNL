@@ -13,7 +13,7 @@ int		get_next_line(int fd, char **line)
 	result = 0;
 	if (!s_line)
 		s_line = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-	if (BUFFER_SIZE < 1 && fd < 3 && !s_line)
+	if (BUFFER_SIZE < 1 || fd < 3 || !s_line)
 		return(-1);
 	while (!check_line(s_line))
 	{
@@ -33,7 +33,7 @@ int		get_next_line(int fd, char **line)
 	}
 	s_line = cleanline(line, s_line);
 	free(l_buffer);
-	return (result);
+	return (1);
 }
 
 /* Função responsável por unir as duas strings                                */
