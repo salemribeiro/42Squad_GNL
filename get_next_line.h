@@ -10,3 +10,4 @@ int			check_line(char*);
 size_t		ft_strlcpy(char *dest, char *src, size_t size);
 size_t		ft_strlen(const char *source);
 char		*cleanline(char **line, char *l_temp);
+int			newline(char *s_line);
