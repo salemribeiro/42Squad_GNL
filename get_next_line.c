@@ -1,13 +1,26 @@
 #include "get_next_line.h"
 
-/* Função principal para leitura de linha                                     */
+/* FUNÇÃO PRINCIPAL.                                                          */
+/* Responsável por executar a leitura das linhas de um arquivo, realizando    */
+/*   isto atráves de um loop, carregando os dados em pates discretas cujo o   */
+/*   tamanho é definido em tempo de compilação através da flag "BUFFER_SIZE". */
+/*        (gcc -Wall -Wextra -Wextra -D BUFFER_SIZE=70 -g *.c)                */
+/* As partes são unidas formando uma linha e sua completude é definida após a */
+/*   obtenção do carácter '\n'.                                               */
+/* O término função é feito após o encontro de um '\n', '\0', erro ou fim de  */
+/*   arquivo "EOF".                                                           */
+/* O objetivo principal do exercício é o entendimento do modificador "static" */
+/*   utilizado na persistência de dados em memória, treino com a biblioteca   */
+/*   de "IO" e o uso responsável de alocação de memória.                      */
+/* Este projeto mostra a dificuldade em lidar com as funções Malloc e Free.   */
 int		get_next_line(int fd, char **line)
 {
 	static char	*s_line;
 	char		*l_buffer;
 	int			result;
 
-	free(*line);
+	if (*line)
+		free(*line);
 	*line = NULL;
 	l_buffer = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	result = 0;
@@ -23,11 +36,13 @@ int		get_next_line(int fd, char **line)
 		else if (result == 0)
 		{
 			*line = ft_strjoin(s_line, l_buffer);
+			free(s_line);
+			free(l_buffer);
 			return (0);
 		}
 		else
 		{
-			*line = s_line;
+			free(s_line);
 			return (-1);
 		}
 	}
@@ -36,7 +51,7 @@ int		get_next_line(int fd, char **line)
 	return (1);
 }
 
-/* Função responsável por unir as duas strings                                */
+/* Função responsável por unir as duas strings.                               */
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*ptr;
@@ -65,7 +80,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (ptr);
 }
 
-/* Função verifica se já temos uma linha completa                             */
+/* Função validar se existe uma linha completa, ele verifica se o \n já está  */
+/*   contido na função e retorna um inteiro verdadeiro ou falso.              */
 int		check_line(char *ptr)
 {
 	int newline;
@@ -82,10 +98,9 @@ int		check_line(char *ptr)
 	return (newline);
 }
 
-/* Função responsável por alocar memória                                      */
-/* foi modificada para retornar um ponteiro de char e bzero foi incluido no   */
-/* código, evitando a implementação de mais uma função no arquivo             */
-
+/* Função responsável por alocar memória, foi modificada para retornar um     */
+/*   ponteiro de char e foi mesclada a função bzero, evitando assim  a        */
+/*   implementação de mais uma função no arquivo.                             */
 char	*ft_calloc(size_t count, size_t size)
 {
 	char	*ptr;
@@ -103,7 +118,7 @@ char	*ft_calloc(size_t count, size_t size)
 	}
 	return (ptr);
 }
-/* Função responsável por copiar os dados de uma string para outra            */
+/* Função responsável por copiar os dados de uma string para outra.           */
 size_t		ft_strlcpy(char *dest, char *src, size_t size)
 {
 	size_t i;
@@ -124,7 +139,7 @@ size_t		ft_strlcpy(char *dest, char *src, size_t size)
 	}
 	return (j);
 }
-
+/* Função responsável por contar caracteres na string.                        */
 size_t		ft_strlen(const char *source)
 {
 	int i;
