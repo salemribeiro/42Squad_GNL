@@ -23,27 +23,29 @@ int		get_next_line(int fd, char **line)
 	result = 0;
 	if (!s_line)
 		s_line = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-	if (BUFFER_SIZE >= 1 && fd >= 3 && s_line)
+	if (BUFFER_SIZE < 1 || fd < 3 || !s_line)
+		return(-1);
+	while (!check_line(s_line))
 	{
-		while (!check_line(s_line))
+		result = read(fd, l_buffer, BUFFER_SIZE);
+		if (result > 0 &&  result <= BUFFER_SIZE)
+			s_line = ft_strjoin(s_line, l_buffer);
+		else if (result == 0)
 		{
-			result = read(fd, l_buffer, BUFFER_SIZE);
-			if (result > 0 &&  result <= BUFFER_SIZE)
-			{
-				s_line = ft_strjoin(s_line, l_buffer);
-				s_line = cleanline(line, s_line);
-				return(1);
-			}
-			else if (result == 0)
-			{
-				*line = ft_strjoin(s_line, l_buffer);
-				return (0);
-			}
+			*line = ft_strjoin(s_line, l_buffer);
+			free(l_buffer);
+			return (0);
+		}
+		else
+		{
+			free(s_line);
+			free(l_buffer);
+			return (-1);
 		}
 	}
-	free(s_line);
+	s_line = cleanline(line, s_line);
 	free(l_buffer);
-	return (-1);
+	return (1);
 }
 
 /* Função responsável por unir as duas strings.                               */
@@ -69,11 +71,10 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	free(s1);
-	free(s2);
 	return (ptr);
 }
 
-/* Função valida se existe uma linha completa, ele verifica se o \n já está  */
+/* Função validar se existe uma linha completa, ele verifica se o \n já está  */
 /*   contido na função e retorna um inteiro verdadeiro ou falso.              */
 int		check_line(char *ptr)
 {
@@ -111,7 +112,6 @@ char	*ft_calloc(size_t count, size_t size)
 	}
 	return (ptr);
 }
-
 /* Função responsável por copiar os dados de uma string para outra.           */
 size_t		ft_strlcpy(char *dest, char *src, size_t size)
 {
