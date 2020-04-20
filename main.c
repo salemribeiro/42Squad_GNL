@@ -1,25 +1,25 @@
 #include "get_next_line.h"
-
+#include <stdio.h>
 int main()
 {
-	static int	fd;
+	int			fd;
 	int			ret;
-	static char	*line;
+	char		*line;
 
-	fd = open("./teste", O_RDONLY);
-	while ((ret = get_next_line(fd, &line)))
-	{
-		printf("%s\n", line);
-		if (*line)
+	fd = open("./test1.txt", O_RDONLY);
+	do{
+		ret = get_next_line(fd, line);
+		if (ret)
 		{
-			free(line);
-			line = NULL;
+			printf("%s\n", &line);
+			if (*line)
+			{
+				free(line);
+				line = NULL;
+			}
 		}
-	}
-	if (*line)
-	{
-		free(line);
-		line = NULL;
-	}
+	}while (ret);
+	free (line);
+	line = NULL;
 	return (0);
 }
