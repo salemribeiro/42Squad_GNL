@@ -6,20 +6,22 @@ int main()
 	int			ret;
 	char		*line;
 
-	fd = open("./test_file7", O_RDONLY);
-	do{
-		ret = get_next_line(fd, &line);
-		if (ret)
+	fd = open("./test1.txt", O_RDONLY);
+	
+	while((ret = get_next_line(fd, &line)))
+	{
+		printf("%s\n", line);
+		if (*line)
 		{
-			printf("%s\n", line);
-			if (*line)
-			{
-				free(line);
-				line = NULL;
-			}
+			free(line);
+			line = NULL;
 		}
-	}while (ret);
-	free (line);
-	line = NULL;
+	}
+	if (ret >= 0)
+	{
+		printf("%s\n", line);
+		if (*line)
+			free (line);
+	}
 	return (0);
 }
