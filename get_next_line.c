@@ -23,7 +23,7 @@ int		get_next_line(int fd, char **line)
 	result = 0;
 	if (!s_line)
 		s_line = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-	if (BUFFER_SIZE < 1 || fd < 3 || !s_line)
+	if (BUFFER_SIZE < 1 || fd < 0 || (fd > 0 && fd < 3) || !s_line)
 		return(-1);
 	while (!check_line(s_line))
 	{

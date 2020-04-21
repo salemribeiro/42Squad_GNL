@@ -4,8 +4,6 @@ char	*cleanline(char **line, char *s_line)
 {
 	char	*l_temp;
 	int		pos;
-	if (line)
-		free(*line);
 	pos = newline(s_line);
 	if (pos >= 0)
 	{
