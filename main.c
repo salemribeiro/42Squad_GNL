@@ -7,21 +7,22 @@ int main()
 	char		*line;
 
 	fd = open("./1.txt", O_RDONLY);
-	
 	while((ret = get_next_line(fd, &line)))
 	{
-		printf("%s\n", line);
 		if (*line)
 		{
+			printf("%s\n", line);
 			free(line);
 			line = NULL;
 		}
 	}
 	if (ret >= 0)
 	{
-		printf("%s\n", line);
 		if (*line)
+		{
+			printf("%s\n", line);
 			free (line);
+		}
 	}
 	return (0);
 }

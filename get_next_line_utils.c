@@ -30,7 +30,10 @@ int		newline(char *s_line)
 	while (s_line[i])
 	{
 		if (s_line[i] == '\n' && pos == -1)
+		{
 			 pos = i;
+			 return(pos);
+		}
 		i++;
 	}
 	return (pos);

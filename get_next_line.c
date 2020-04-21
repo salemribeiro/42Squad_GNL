@@ -28,9 +28,9 @@ int		get_next_line(int fd, char **line)
 	while (!check_line(s_line))
 	{
 		result = read(fd, l_buffer, BUFFER_SIZE);
-		if (result == BUFFER_SIZE)
+		if (result > 0 && result <= BUFFER_SIZE)
 			s_line = ft_strjoin(s_line, l_buffer);
-		else if (result >= 0 && result < BUFFER_SIZE)
+		else if (result == 0)
 		{
 			s_line = ft_strjoin(s_line, l_buffer);
 			cleanline(line, s_line);
