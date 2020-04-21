@@ -15,7 +15,7 @@ SRCS = *.c
 OBJS = *.o
 CPARAMS = -c
 CFLAGS = -Wall -Werror -Wextra -D BUFFER_SIZE=70 -g
-CC = gcc
+CC = clang
 AR = ar
 ARPARAMS = -rc
 

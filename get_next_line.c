@@ -18,9 +18,7 @@ int		get_next_line(int fd, char **line)
 	static char	*s_line;
 	char		*l_buffer;
 	int			result;
-	int			bf;
 
-	bf = BUFFER_SIZE;
 	l_buffer = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	result = 0;
 	if (!s_line)
@@ -30,11 +28,12 @@ int		get_next_line(int fd, char **line)
 	while (!check_line(s_line))
 	{
 		result = read(fd, l_buffer, BUFFER_SIZE);
-		if (result == bf)
+		if (result == BUFFER_SIZE)
 			s_line = ft_strjoin(s_line, l_buffer);
-		else if (result >= 0 && result < bf)
+		else if (result >= 0 && result < BUFFER_SIZE)
 		{
-			*line = ft_strjoin(s_line, l_buffer);
+			s_line = ft_strjoin(s_line, l_buffer);
+			cleanline(line, s_line);
 			free(l_buffer);
 			return (0);
 		}
