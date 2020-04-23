@@ -32,8 +32,9 @@ int		get_next_line(int fd, char **line)
 			s_line = ft_strjoin(s_line, l_buffer);
 		else if (result == 0)
 		{
-			s_line = ft_strjoin(s_line, l_buffer);
-			cleanline(line, s_line);
+			free(s_line);
+			//s_line = ft_strjoin(s_line, l_buffer);
+			//cleanline(line, s_line);
 			free(l_buffer);
 			return (0);
 		}

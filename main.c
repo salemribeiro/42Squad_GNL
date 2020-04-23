@@ -6,7 +6,7 @@ int main()
 	int			ret;
 	char		*line;
 
-	fd = open("./1.txt", O_RDONLY);
+	fd = open("./test1.txt", O_RDONLY);
 	while((ret = get_next_line(fd, &line)))
 	{
 		if (*line)
@@ -14,14 +14,6 @@ int main()
 			printf("%s\n", line);
 			free(line);
 			line = NULL;
-		}
-	}
-	if (ret >= 0)
-	{
-		if (*line)
-		{
-			printf("%s\n", line);
-			free (line);
 		}
 	}
 	return (0);
