@@ -50,4 +50,3 @@ size_t		ft_strlen(const char *source)
 		i++;
 	return (i);
 }
-

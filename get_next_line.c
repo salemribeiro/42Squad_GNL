@@ -33,8 +33,6 @@ int		get_next_line(int fd, char **line)
 		else if (result == 0)
 		{
 			free(s_line);
-			//s_line = ft_strjoin(s_line, l_buffer);
-			//cleanline(line, s_line);
 			free(l_buffer);
 			return (0);
 		}
@@ -57,7 +55,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		i;
 	int		j;
 
-	i = ft_strlen(s1); //inclusão do contador e retirado do laço
+	i = ft_strlen(s1);
 	j = ft_strlen(s2);
 	ptr = (char*)ft_calloc(i + j + 1, sizeof(char));
 	i = 0;
@@ -73,7 +71,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	free(s1);
-	s1 = NULL;
 	return (ptr);
 }
 
