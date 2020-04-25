@@ -34,7 +34,10 @@ if (fd < 0 || BUFFER_SIZE < 1)
 		if (result > 0 && result <= BUFFER_SIZE)
 			s_line = ft_strjoin(s_line, l_buffer);
 		else if (result == 0)
+		{
+			cleanline(line, s_line);
 			valid = 0;
+		}
 		else
 			valid = -1;
 	}

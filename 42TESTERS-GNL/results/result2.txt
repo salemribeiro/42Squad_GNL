@@ -68,7 +68,7 @@
 |KKKKKKKKKKKKKKKKKKKKKKKKKKKKKk
 |LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLl
 |MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm
-|(null)
+|NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNn
 
 Right number of lines
 
@@ -84,7 +84,7 @@ Right number of lines
 |
 |Et encore les 2 suivantes.
 |
-|(null)
+|
 
 Right number of lines
 
@@ -92,7 +92,7 @@ Right number of lines
 ======== TEST 3 : The Empty File =========
 ==========================================
 
-|(null)
+|
 
 Right number of lines
 
@@ -101,7 +101,7 @@ Right number of lines
 ==========================================
 
 |
-|(null)
+|
 
 Right number of lines
 
@@ -113,7 +113,7 @@ Right number of lines
 |
 |
 |
-|(null)
+|
 
 Right number of lines
 
@@ -121,9 +121,9 @@ Right number of lines
 ============== TEST 6 : 42 ===============
 ==========================================
 
-|(null)
-|(null)
-|(null)
+|answer to life the universe and everythini
+|answer to life the universe and everything
+|answer to life the universe and everything-g
 
 Right number of lines
 
@@ -155,7 +155,7 @@ OOOOOOOOOOOOOO
      |       _)
      |      |
      oooooooo
-(null)
+    /        \
 
 Right number of lines
 

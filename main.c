@@ -6,11 +6,28 @@ int main()
 	int			ret;
 	char		*line;
 
-	fd = open("./empty_file", O_RDONLY);
-	while((ret = get_next_line(fd, &line)))
+	fd = open("./files/test1.txt", O_RDONLY);
+	ret = get_next_line(fd, &line);
+	while(line)
 	{
-			printf("%s\n", line);
-			free(line);
+		printf("%s\n", line);
+		free(line);
+		if (ret <= 0)
+			break;
+		ret = get_next_line(fd, &line);
 	}
-	return (0);
+	switch (ret)
+	{
+		case -1:
+			printf("Arquivo terminou com erro");
+		break;
+		case 0:
+			printf("PROGRAMA TERMINOU DE MANEIRA CORRETA.");
+		break;
+		case 1:
+			printf("Arquivo não foi lido por completo.");
+		break;
+	}
+	close (ret);
+	return (ret);
 }
