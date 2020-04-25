@@ -21,6 +21,19 @@ char	*cleanline(char **line, char *s_line)
 	return (NULL);
 }
 
+void	cleanbuffer(char *l_buffer)
+{
+	int i;
+
+	i = 0;
+	while (i < BUFFER_SIZE)
+	{
+		l_buffer[i] = '\0';
+		i++;
+	}
+}
+
+
 int		newline(char *s_line)
 {
 	int i;

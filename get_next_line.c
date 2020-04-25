@@ -32,9 +32,13 @@ if (fd < 0 || BUFFER_SIZE < 1)
 	{
 		result = read(fd, l_buffer, BUFFER_SIZE);
 		if (result > 0 && result <= BUFFER_SIZE)
+		{
 			s_line = ft_strjoin(s_line, l_buffer);
+			cleanbuffer(l_buffer);
+		}
 		else if (result == 0)
 		{
+			s_line = ft_strjoin(s_line, l_buffer);
 			cleanline(line, s_line);
 			valid = 0;
 		}

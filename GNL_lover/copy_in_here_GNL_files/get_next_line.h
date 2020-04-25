@@ -9,3 +9,4 @@ size_t		ft_strlcpy(char *dest, char *src, size_t size);
 size_t		ft_strlen(const char *source);
 char		*cleanline(char **line, char *s_line);
 int			newline(char *s_line);
+void		cleanbuffer(char *l_buffer);
