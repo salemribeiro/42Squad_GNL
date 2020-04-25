@@ -22,15 +22,12 @@ int		get_next_line(int fd, char **line)
 
 	result = 0;
 	valid  = 1;
-	
-	if (fd < 0 || line == NULL)
+	*line = NULL;
+if (fd < 0 || BUFFER_SIZE < 1)
 		return (-1);
-
 	l_buffer = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (!s_line)
 		s_line = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-
-
 	while (!check_line(s_line) && valid == 1)
 	{
 		result = read(fd, l_buffer, BUFFER_SIZE);

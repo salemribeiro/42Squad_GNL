@@ -1058,7 +1058,7 @@
 |KKKKKKKKKKKKKKKKKKKKKKKKKKKKKk
 |LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLl
 |MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm
-| lj{y
+|(null)
 
 Right number of lines
 
@@ -3977,19 +3977,4 @@ Right number of lines
 |8lMjR9y+7vFxkxTxWtTrZd8fv9RjX/cNKlckByynwebDxzeL3SOdIXWJCK1j/v0k
 |noJ2KZj3GyAanM5Uk0TfezF57u8r6SObN3yYlDnOeah4lqhkH/tzYebbo2bfqFKp
 |R/c2XchWqBCs6CGiqHOEpIVX5yiFSMGSz0apdUHqb9L9hS7a7TNm7nkwXJ9ZPxyN
-|PQBt7cxpKscGEVkEhYWMnwiylfBfqrsxZtWfp3o2dC5PrToEHeCoLMEeGd3F20n8
-|7xb1dvFu7KH66zDgY2EmFpLPHSfmHhUn6jEzS00CBO4CDD0mmyrNo0lcR5Vi6zQy
-|yQ4rTpl8ZiAFBiS2z3dOV2sakdom5Iruuzjoxa+rG3rrGJrKe9Ayq88NfIGQ1sbs
-|pHbPORbmLr5FKnee8A4E8sjsUINSBB0tZMbBxwPAx9RVqID+uggqDCyInwL7mhAi
-| lj{y
-
-Right number of lines
-
-==========================================
-======== TEST 8 : SUPER LONG LINE ========
-==========================================
-
-àlj{y
-
-Right number of lines
-
+|PQBt7cxpKscGEVk
