@@ -18,36 +18,35 @@ int		get_next_line(int fd, char **line)
 	static char	*s_line;
 	char		*l_buffer;
 	int			result;
+	int			valid;
 
 	l_buffer = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	result = 0;
+	valid  = 1;
 	if (!s_line)
 		s_line = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (BUFFER_SIZE < 1 || fd < 0 || (fd > 0 && fd < 3) || !s_line)
 		return(-1);
-	while (!check_line(s_line))
+	while (!check_line(s_line) && valid == 1)
 	{
 		result = read(fd, l_buffer, BUFFER_SIZE);
 		if (result > 0 && result <= BUFFER_SIZE)
 			s_line = ft_strjoin(s_line, l_buffer);
 		else if (result == 0)
-		{
-			free(s_line);
-			//s_line = ft_strjoin(s_line, l_buffer);
-			//cleanline(line, s_line);
-			free(l_buffer);
-			return (0);
-		}
+			valid = 0;
 		else
-		{
-			free(s_line);
-			free(l_buffer);
-			return (-1);
-		}
+			valid = -1;
 	}
-	s_line = cleanline(line, s_line);
+	if (valid > 0)
+		s_line = cleanline(line, s_line);
+	else
+	{
+		free(s_line);
+		s_line = NULL;
+	}
 	free(l_buffer);
-	return (1);
+	l_buffer = NULL;
+	return (valid);
 }
 
 /* Função responsável por unir as duas strings.                               */
@@ -57,7 +56,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		i;
 	int		j;
 
-	i = ft_strlen(s1); //inclusão do contador e retirado do laço
+	i = ft_strlen(s1);
 	j = ft_strlen(s2);
 	ptr = (char*)ft_calloc(i + j + 1, sizeof(char));
 	i = 0;
@@ -73,7 +72,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	free(s1);
-	s1 = NULL;
 	return (ptr);
 }
 

@@ -6,15 +6,11 @@ int main()
 	int			ret;
 	char		*line;
 
-	fd = open("./test1.txt", O_RDONLY);
+	fd = open("./empty_file", O_RDONLY);
 	while((ret = get_next_line(fd, &line)))
 	{
-		if (*line)
-		{
 			printf("%s\n", line);
 			free(line);
-			line = NULL;
-		}
 	}
 	return (0);
 }

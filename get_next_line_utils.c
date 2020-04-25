@@ -13,12 +13,11 @@ char	*cleanline(char **line, char *s_line)
 		ft_strlcpy(*line, s_line, ft_strlen(s_line) + 1);
 		ft_strlcpy(l_temp, &s_line[pos + 1], ft_strlen(&s_line[pos + 1]) + 1);
 		free(s_line);
+		s_line = NULL;
 		return (l_temp);
 	}
-	free(*line);
 	*line = (char*)calloc(ft_strlen(s_line + 1), sizeof(char));
 	ft_strlcpy(*line, s_line, ft_strlen(s_line) + 1);
-	free(s_line);
 	return (NULL);
 }
 
