@@ -34,17 +34,22 @@ int		get_next_line(int fd, char **line)
 		{
 			free(s_line);
 			free(l_buffer);
+			s_line = NULL;
+			l_buffer = NULL;
 			return (0);
 		}
 		else
 		{
 			free(s_line);
 			free(l_buffer);
+			s_line = NULL;
+			l_buffer = NULL;
 			return (-1);
 		}
 	}
 	s_line = cleanline(line, s_line);
 	free(l_buffer);
+	l_buffer = NULL;
 	return (1);
 }
 
