@@ -20,9 +20,9 @@ int		get_next_line(int fd, char **line)
 	int			result;
 	int			valid;
 
-	l_buffer = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	result = 0;
 	valid  = 1;
+	l_buffer = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (!s_line)
 		s_line = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (BUFFER_SIZE < 1 || fd < 0 || (fd > 0 && fd < 3) || !s_line)
