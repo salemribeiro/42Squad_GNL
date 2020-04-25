@@ -68,7 +68,7 @@
 |KKKKKKKKKKKKKKKKKKKKKKKKKKKKKk
 |LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLl
 |MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm
-|NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNnN
+|NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNn
 
 Right number of lines
 
@@ -121,9 +121,9 @@ Right number of lines
 ============== TEST 6 : 42 ===============
 ==========================================
 
-|answer to life the universe and everythinh
+|answer to life the universe and everythin
 |answer to life the universe and everything
-|answer to life the universe and everything-ng
+|answer to life the universe and everything-
 
 Right number of lines
 
@@ -155,7 +155,7 @@ OOOOOOOOOOOOOO
      |       _)
      |      |
      oooooooo
-    /        \  
+    /        \
 
 Right number of lines
 

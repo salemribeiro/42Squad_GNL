@@ -121,9 +121,9 @@ Right number of lines
 ============== TEST 6 : 42 ===============
 ==========================================
 
-|answer to life the universe and everythini
+|answer to life the universe and everythin
 |answer to life the universe and everything
-|answer to life the universe and everything-g
+|answer to life the universe and everything-
 
 Right number of lines
 
