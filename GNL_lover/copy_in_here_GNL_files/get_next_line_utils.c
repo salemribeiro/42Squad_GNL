@@ -16,10 +16,29 @@ char	*cleanline(char **line, char *s_line)
 		s_line = NULL;
 		return (l_temp);
 	}
-	*line = (char*)calloc(ft_strlen(s_line + 1), sizeof(char));
+	*line = (char*)calloc(ft_strlen(s_line) + 1, sizeof(char));
 	ft_strlcpy(*line, s_line, ft_strlen(s_line) + 1);
-	return (NULL);
+	free(s_line);
+	s_line = NULL;
+	return (s_line);
 }
+
+
+void	ft_bzero(char *source)
+{
+	int i;
+
+	i = 0;
+	if (source)
+	{
+		while (i < BUFFER_SIZE)
+		{
+			source[i] = '\0';
+			i++;
+		}
+	}
+}
+
 
 int		newline(char *s_line)
 {
@@ -27,14 +46,17 @@ int		newline(char *s_line)
 	int pos;
 	i = 0;
 	pos = -1;
-	while (s_line[i])
+	if (s_line)
 	{
-		if (s_line[i] == '\n' && pos == -1)
+		while (s_line[i])
 		{
-			 pos = i;
-			 return(pos);
+			if (s_line[i] == '\n' && pos == -1)
+			{
+			 	pos = i;
+			 	return(pos);
+			}
+			i++;
 		}
-		i++;
 	}
 	return (pos);
 }
@@ -45,7 +67,10 @@ size_t		ft_strlen(const char *source)
 	int i;
 
 	i = 0;
-	while (source[i] != '\0')
-		i++;
+	if (source)
+	{
+		while (source[i] != '\0')
+			i++;
+	}
 	return (i);
 }

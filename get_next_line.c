@@ -31,7 +31,7 @@ if (fd < 0 || BUFFER_SIZE < 1)
 	while (!check_line(s_line) && valid == 1)
 	{
 		result = read(fd, l_buffer, BUFFER_SIZE);
-		if (result > 0 && result <= BUFFER_SIZE)
+		if (result > 0 && result <= BUFFER_SIZE && s_line)
 		{
 			s_line = ft_strjoin(s_line, l_buffer);
 			ft_bzero(l_buffer);

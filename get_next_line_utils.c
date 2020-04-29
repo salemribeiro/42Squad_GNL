@@ -16,7 +16,7 @@ char	*cleanline(char **line, char *s_line)
 		s_line = NULL;
 		return (l_temp);
 	}
-	*line = (char*)calloc(ft_strlen(s_line + 1), sizeof(char));
+	*line = (char*)calloc(ft_strlen(s_line) + 1, sizeof(char));
 	ft_strlcpy(*line, s_line, ft_strlen(s_line) + 1);
 	free(s_line);
 	s_line = NULL;

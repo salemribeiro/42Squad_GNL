@@ -22,18 +22,26 @@ int		get_next_line(int fd, char **line)
 
 	result = 0;
 	valid  = 1;
+	*line = NULL;
+if (fd < 0 || BUFFER_SIZE < 1)
+		return (-1);
 	l_buffer = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (!s_line)
 		s_line = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-	if (BUFFER_SIZE < 1 || fd < 0 || (fd > 0 && fd < 3) || !s_line)
-		return(-1);
 	while (!check_line(s_line) && valid == 1)
 	{
 		result = read(fd, l_buffer, BUFFER_SIZE);
-		if (result > 0 && result <= BUFFER_SIZE)
+		if (result > 0 && result <= BUFFER_SIZE && s_line)
+		{
 			s_line = ft_strjoin(s_line, l_buffer);
+			ft_bzero(l_buffer);
+		}
 		else if (result == 0)
+		{
+			s_line = ft_strjoin(s_line, l_buffer);
+			s_line = cleanline(line, s_line);
 			valid = 0;
+		}
 		else
 			valid = -1;
 	}
@@ -41,7 +49,8 @@ int		get_next_line(int fd, char **line)
 		s_line = cleanline(line, s_line);
 	else
 	{
-		free(s_line);
+		if (s_line)
+			free(s_line);
 		s_line = NULL;
 	}
 	free(l_buffer);
@@ -60,6 +69,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	j = ft_strlen(s2);
 	ptr = (char*)ft_calloc(i + j + 1, sizeof(char));
 	i = 0;
+	
 	while (s1[i])
 	{
 		ptr[i] = s1[i];
@@ -84,6 +94,8 @@ int		check_line(char *ptr)
 
 	newline = 0;
 	i = 0;
+	if (!ptr)
+		return (1);
 	while(ptr[i])
 	{
 		if(ptr[i] == '\n')
