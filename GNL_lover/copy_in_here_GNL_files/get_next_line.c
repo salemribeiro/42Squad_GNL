@@ -15,47 +15,30 @@
 /* Este projeto mostra a dificuldade em lidar com as funções Malloc e Free.   */
 int		get_next_line(int fd, char **line)
 {
-	static char	*s_line;
-	char		*l_buffer;
-	int			result;
-	int			valid;
+	static char		*s_line;
+	char			*l_buffer;
+	register int	result;
 
-	result = 0;
-	valid  = 1;
+	result = 1;
 	*line = NULL;
-if (fd < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (-1);
 	l_buffer = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (!s_line)
 		s_line = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-	while (!check_line(s_line) && valid == 1)
+	while (!check_line(s_line) && (result >= 1 && result <= BUFFER_SIZE))
 	{
 		result = read(fd, l_buffer, BUFFER_SIZE);
 		if (result > 0 && result <= BUFFER_SIZE && s_line)
-		{
 			s_line = ft_strjoin(s_line, l_buffer);
-			ft_bzero(l_buffer);
-		}
-		else if (result == 0)
-		{
-			s_line = ft_strjoin(s_line, l_buffer);
-			s_line = cleanline(line, s_line);
-			valid = 0;
-		}
-		else
-			valid = -1;
+		ft_bzero(l_buffer);
 	}
-	if (valid > 0)
+	if (result >= 0 && result <= BUFFER_SIZE)
 		s_line = cleanline(line, s_line);
-	else
-	{
-		if (s_line)
-			free(s_line);
-		s_line = NULL;
-	}
 	free(l_buffer);
-	l_buffer = NULL;
-	return (valid);
+	if (result > 0 && result <= BUFFER_SIZE)
+		return (1);
+	return (result == 0 ? 0 : -1);
 }
 
 /* Função responsável por unir as duas strings.                               */
@@ -85,7 +68,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (ptr);
 }
 
-/* Função validar se existe uma linha completa, ele verifica se o \n já está  */
+/* Função valida se existe uma linha completa, ele verifica se o \n já está   */
 /*   contido na função e retorna um inteiro verdadeiro ou falso.              */
 int		check_line(char *ptr)
 {
@@ -125,6 +108,7 @@ char	*ft_calloc(size_t count, size_t size)
 	}
 	return (ptr);
 }
+
 /* Função responsável por copiar os dados de uma string para outra.           */
 size_t		ft_strlcpy(char *dest, char *src, size_t size)
 {
