@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rcamilo- <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: sfreitas                                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/01/23 19:27:53 by rcamilo-          #+#    #+#              #
-#    Updated: 2020/02/18 10:25:40 by sfreitas         ###   ########.fr        #
+#    Created: 2020/04/29 23:01:06 by sfreitas          #+#    #+#              #
+#    Updated: 2020/04/29 23:01:42 by sfreitas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRCS = *.c
 OBJS = *.o
 CPARAMS = -c
 CFLAGS = -Wall -Werror -Wextra -D BUFFER_SIZE=70 -g
-CC = clang
+CC = gcc
 AR = ar
 ARPARAMS = -rc
 
