@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfreitas                                   +#+  +:+       +#+        */
+/*   By: sfreitas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 22:56:45 by sfreitas          #+#    #+#             */
 /*   Updated: 2020/04/29 22:57:17 by sfreitas         ###   ########.fr       */
@@ -12,10 +12,17 @@
 
 #include "get_next_line.h"
 
-char	*cleanline(char **line, char *s_line)
+/*
+** Função responsável por tranferir dados de uma linha completa encontrada no
+**    ponteiro s_line para **line e retirada dos dados transferidos restando
+**    somente o resto para a proxima interação.
+*/
+
+char		*cleanline(char **line, char *s_line)
 {
 	char	*l_temp;
 	int		pos;
+
 	pos = newline(s_line);
 	if (pos >= 0)
 	{
@@ -35,8 +42,11 @@ char	*cleanline(char **line, char *s_line)
 	return (s_line);
 }
 
+/*
+** Função responsável por zerar caracteres do ponteiro
+*/
 
-void	ft_bzero(char *source)
+void		ft_bzero(char *source)
 {
 	int i;
 
@@ -51,11 +61,15 @@ void	ft_bzero(char *source)
 	}
 }
 
+/*
+** Função verifica se já foi atigido o valor de uma linha completa
+*/
 
-int		newline(char *s_line)
+int			newline(char *s_line)
 {
 	int i;
 	int pos;
+
 	i = 0;
 	pos = -1;
 	if (s_line)
@@ -64,8 +78,8 @@ int		newline(char *s_line)
 		{
 			if (s_line[i] == '\n' && pos == -1)
 			{
-			 	pos = i;
-			 	return(pos);
+				pos = i;
+				return (pos);
 			}
 			i++;
 		}
@@ -73,7 +87,10 @@ int		newline(char *s_line)
 	return (pos);
 }
 
-/* Função responsável por contar caracteres na string.                        */
+/*
+** Função responsável por contar caracteres na string.
+*/
+
 size_t		ft_strlen(const char *source)
 {
 	int i;
