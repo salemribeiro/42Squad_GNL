@@ -13,19 +13,19 @@
 #include "get_next_line.h"
 
 /*
-** FUNÇÃO PRINCIPAL
-** Responsável por executar a leitura das linhas de um arquivo, realizando
-**  isto atráves de um loop, carregando os dados em pates discretas cujo o
-**   tamanho é definido em tempo de compilação através da flag "BUFFER_SIZE".
+** FUNCAO PRINCIPAL
+** Responsavel por executar a leitura das linhas de um arquivo, realizando
+**  isto atraves de um loop, carregando os dados em pates discretas cujo o
+**   tamanho e definido em tempo de compilacao atraves da flag "BUFFER_SIZE".
 **        (gcc -Wall -Wextra -Wextra -D BUFFER_SIZE=70 -g *.c)
-** As partes são unidas formando uma linha e sua completude é definida após a
-**   obtenção do carácter '\n'.
-** O término função é feito após o encontro de um '\n', '\0', erro ou fim de
+** As partes sao unidas formando uma linha e sua completude e definida apos a
+**   obtencao do caracter '\n'.
+** O termino funcao e feito apos o encontro de um '\n', '\0', erro ou fim de
 **   arquivo "EOF".
-** O objetivo principal do exercício é o entendimento do modificador "static"
-**   utilizado na persistência de dados em memória, treino com a biblioteca
-**   de "IO" e o uso responsável de alocação de memória.
-** Este projeto mostra a dificuldade em lidar com as funções Malloc e Free.
+** O objetivo principal do exercicio e o entendimento do modificador "static"
+**   utilizado na persistencia de dados em memoria, treino com a biblioteca
+**   de "IO" e o uso responsavel de alocacao de memoria.
+** Este projeto mostra a dificuldade em lidar com as funcões Malloc e Free.
 */
 
 int			get_next_line(int fd, char **line)
@@ -34,10 +34,10 @@ int			get_next_line(int fd, char **line)
 	char			*l_buffer;
 	register int	result;
 
+	if (!line || fd < 0 || BUFFER_SIZE < 1)
+		return (-1);
 	result = 1;
 	*line = NULL;
-	if (fd < 0 || BUFFER_SIZE < 1)
-		return (-1);
 	l_buffer = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (!s_line)
 		s_line = (char*)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
@@ -57,7 +57,7 @@ int			get_next_line(int fd, char **line)
 }
 
 /*
-** Função responsável por unir as duas strings.
+** Funcao responsavel por unir as duas strings.
 */
 
 char		*ft_strjoin(char *s1, char *s2)
@@ -86,8 +86,8 @@ char		*ft_strjoin(char *s1, char *s2)
 }
 
 /*
-** Função valida se existe uma linha completa, ele verifica se o \n já está
-**   contido na função e retorna um inteiro verdadeiro ou falso.
+** Funcao valida se existe uma linha completa, ele verifica se o \n ja esta
+**   contido na funcao e retorna um inteiro verdadeiro ou falso.
 */
 
 int			check_line(char *ptr)
@@ -109,9 +109,9 @@ int			check_line(char *ptr)
 }
 
 /*
-** Função responsável por alocar memória, foi modificada para retornar um
-**   ponteiro de char e foi mesclada a função bzero, evitando assim  a
-**   implementação de mais uma função no arquivo.
+** Funcao responsavel por alocar memoria, foi modificada para retornar um
+**   ponteiro de char e foi mesclada a funcao bzero, evitando assim  a
+**   implementacao de mais uma funcao no arquivo.
 */
 
 char		*ft_calloc(size_t count, size_t size)
@@ -133,7 +133,7 @@ char		*ft_calloc(size_t count, size_t size)
 }
 
 /*
-** Função responsável por copiar os dados de uma string para outra.
+** Funcao responsavel por copiar os dados de uma string para outra.
 */
 
 size_t		ft_strlcpy(char *dest, char *src, size_t size)

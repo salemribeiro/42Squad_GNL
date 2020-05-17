@@ -13,9 +13,9 @@
 #include "get_next_line.h"
 
 /*
-** Função responsável por tranferir dados de uma linha completa encontrada no
+** Funcao responsavel por tranferir dados de uma linha completa encontrada no
 **    ponteiro s_line para **line e retirada dos dados transferidos restando
-**    somente o resto para a proxima interação.
+**    somente o resto para a proxima interacao.
 */
 
 char		*cleanline(char **line, char *s_line)
@@ -43,7 +43,7 @@ char		*cleanline(char **line, char *s_line)
 }
 
 /*
-** Função responsável por zerar caracteres do ponteiro
+** Funcao responsavel por zerar caracteres do ponteiro
 */
 
 void		ft_bzero(char *source)
@@ -62,7 +62,7 @@ void		ft_bzero(char *source)
 }
 
 /*
-** Função verifica se já foi atigido o valor de uma linha completa
+** Funcao verifica se ja foi atigido o valor de uma linha completa
 */
 
 int			newline(char *s_line)
@@ -88,7 +88,7 @@ int			newline(char *s_line)
 }
 
 /*
-** Função responsável por contar caracteres na string.
+** Funcao responsavel por contar caracteres na string.
 */
 
 size_t		ft_strlen(const char *source)
