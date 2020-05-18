@@ -53,7 +53,7 @@ void		ft_bzero(char *source)
 	i = 0;
 	if (source)
 	{
-		while (i < BUFFER_SIZE)
+		while (i < BUFFER_SIZE && i < 1000000)
 		{
 			source[i] = '\0';
 			i++;
