@@ -116,9 +116,11 @@ int			check_line(char *ptr)
 
 char		*ft_calloc(size_t count, size_t size)
 {
-	char	*ptr;
+	char			*ptr;
 	register size_t	i;
 
+	if (count > 1000000)
+		count = 1000000;
 	ptr = (char*)malloc(count * size);
 	i = 0;
 	if (ptr)
