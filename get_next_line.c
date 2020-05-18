@@ -19,13 +19,13 @@
 **   tamanho e definido em tempo de compilacao atraves da flag "BUFFER_SIZE".
 **        (gcc -Wall -Wextra -Wextra -D BUFFER_SIZE=70 -g *.c)
 ** As partes sao unidas formando uma linha e sua completude e definida apos a
-**   obtencao do caracter '\n'.
-** O termino funcao e feito apos o encontro de um '\n', '\0', erro ou fim de
+**   obtencao do caracter '\ n'.
+** O termino funcao e feito apos o encontro de um '\ n', '\ 0', erro ou fim de
 **   arquivo "EOF".
 ** O objetivo principal do exercicio e o entendimento do modificador "static"
 **   utilizado na persistencia de dados em memoria, treino com a biblioteca
 **   de "IO" e o uso responsavel de alocacao de memoria.
-** Este projeto mostra a dificuldade em lidar com as funcões Malloc e Free.
+** Este projeto mostra a dificuldade em lidar com as funcoes Malloc e Free.
 */
 
 int			get_next_line(int fd, char **line)
