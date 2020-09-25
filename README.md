@@ -4,12 +4,13 @@ Repositório de desenvolvimento do projeto Get Next Line da 42SP
 
 FUNCAO PRINCIPAL ( get_next_line )
 
-Responsavel por executar a leitura das linhas de um arquivo, realizando
-isto atraves de um loop, carregando os dados em pates discretas cujo o
-   tamanho é definido em tempo de compilacao atraves da flag "BUFFER_SIZE".
+Responsavel por executar a leitura de um arquivo retornando uma linha por
+vez.
+Realiza isto atraves de um laço, carregando os dados em partes discretas cujo o
+ tamanho é definido em tempo de compilacao através da flag "BUFFER_SIZE".
         (gcc -Wall -Wextra -Wextra -D BUFFER_SIZE=70 -g *.c)
 
- As partes sao unidas formando uma linha e sua completude e definida após a
+ As partes são unidas formando uma linha e sua completude e definida após a
    obtencao do caracter '\ n'.
  
  O termino funcao é feito após o encontro de um '\ n', '\ 0', erro ou fim de
